@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Matteo Fabbri</Authors>
+    <Company />
+    <Copyright>Matteo Fabbri 2022</Copyright>
+    <PackageProjectUrl>https://github.com/matteofabbri/PersistentStorage</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/matteofabbri/PersistentStorage</RepositoryUrl>
+    <PackageTags>fast dictionary persistent file based cache key value keyvalue storage serialization serializer</PackageTags>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BinaryPack" Version="1.0.2" />
+    <PackageReference Include="Microsoft.FASTER.Core" Version="1.9.12" />
+  </ItemGroup>
+
+</Project>

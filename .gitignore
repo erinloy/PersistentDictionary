@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/PersistentStorage/v16
+/PersistentDictionary/bin
+/PersistentDictionary/obj
+/PersistentDictionary/.vs/PersistentStorage/DesignTimeBuild
+/PersistentDictionary.Tests/bin
+/PersistentDictionary.Tests/obj
+/.vs/PersistentDictionary/v16/.suo
