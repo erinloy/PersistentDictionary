@@ -7,11 +7,12 @@
     <Authors>Matteo Fabbri</Authors>
     <Company />
     <Copyright>Matteo Fabbri 2022</Copyright>
-    <PackageProjectUrl>https://github.com/matteofabbri/PersistentStorage</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/matteofabbri/PersistentStorage</RepositoryUrl>
-    <PackageTags>fast dictionary persistent file based cache key value keyvalue storage serialization serializer</PackageTags>
+    <PackageProjectUrl>https://github.com/matteofabbri/PersistentDictionary</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/matteofabbri/PersistentDictionary</RepositoryUrl>
+    <PackageTags>fast faster dictionary persistent persistentdictionary file based cache key value keyvalue storage serialization serializer</PackageTags>
     <ApplicationIcon />
     <StartupObject />
+    <Description>Simple utility to create persistent key-value store over FASTER.NET</Description>
   </PropertyGroup>
 
   <ItemGroup>
