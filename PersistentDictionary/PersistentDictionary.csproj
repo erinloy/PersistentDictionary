@@ -13,6 +13,7 @@
     <ApplicationIcon />
     <StartupObject />
     <Description>Simple utility to create persistent key-value store over FASTER.NET</Description>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
