@@ -97,7 +97,7 @@ namespace PersistentDictionary
       {
         operation = await operation.CompleteAsync();
       }
-      while (operation.Status == Status.PENDING);
+      while (!operation.Status.IsCompleted);
     }
 
     public Task Restore()
@@ -112,13 +112,9 @@ namespace PersistentDictionary
     public async Task<TVALUE> Read(TKEY key)
     {
       using var s = _store.NewSession(_functions);
-      
-      TVALUE g1 = default;
-      
-      //TODO: FASTER ReadAsync has some flaws and need to be investigated
-      var operation = s.Read(ref key, ref g1);
-      
-      return g1;
+      var (status, output) = (await s.ReadAsync(ref key)).Complete();
+
+      return output;
     }
 
     protected virtual void Dispose(bool disposing)
