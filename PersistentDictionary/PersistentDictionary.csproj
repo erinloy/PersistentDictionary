@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -13,12 +13,12 @@
     <ApplicationIcon />
     <StartupObject />
     <Description>Simple utility to create persistent key-value store over FASTER.NET</Description>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="BinaryPack" Version="1.0.2" />
-    <PackageReference Include="Microsoft.FASTER.Core" Version="2.0.0-preview.1.2" />
+    <PackageReference Include="Microsoft.FASTER.Core" Version="2.0.0-preview.1.3" />
   </ItemGroup>
 
 </Project>

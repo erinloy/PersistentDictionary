@@ -19,14 +19,12 @@ namespace PersistentDictionary
     readonly string _logObjectDevicePath;
     private IDevice _objLog;
 
-    private bool disposedValue;
-    
+    private bool _disposedValue;
+
     public Dictionary(string storagePath, BinaryObjectSerializer<TKEY> keySerializer, BinaryObjectSerializer<TVALUE> valueSerializer)
     {
       _path = Path.GetFullPath(storagePath);
-      
-      var canRecover = Directory.Exists(_path);
-      
+
       _logDevicePath = Path.GetFullPath(Path.Combine(storagePath, "hlog.log"));
       _log = Devices.CreateLogDevice(_logDevicePath);
       
@@ -47,10 +45,6 @@ namespace PersistentDictionary
           );
 
       _functions = new SimpleFunctions<TKEY, TVALUE>();
-
-      if(canRecover)
-          Restore();
-    
     }
 
     public Task<long> Count(CancellationToken cancellationToken = default)
@@ -100,13 +94,10 @@ namespace PersistentDictionary
       while (!operation.Status.IsCompleted);
     }
 
-    public Task Restore()
+    public async Task Restore()
     {
-      //TODO: FASTER RecoverAsync has some flaws and need to be investigated
       if (Directory.Exists(_path))
-        _store.Recover();
-
-      return Task.CompletedTask;
+        await _store.RecoverAsync();
     }
 
     public async Task<TVALUE> Read(TKEY key)
@@ -119,7 +110,7 @@ namespace PersistentDictionary
 
     protected virtual void Dispose(bool disposing)
     {
-      if (disposedValue) return;
+      if (_disposedValue) return;
 
       if (disposing)
       {
@@ -132,7 +123,7 @@ namespace PersistentDictionary
       }
 
       // TODO: set large fields to null
-      disposedValue = true;
+      _disposedValue = true;
       _store = null;
       _log = null;
       _objLog = null;
