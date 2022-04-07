@@ -1,6 +1,7 @@
 ﻿using FASTER.core;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,10 +26,12 @@ namespace PersistentDictionary
     {
       _path = Path.GetFullPath(storagePath);
 
-      _logDevicePath = Path.GetFullPath(Path.Combine(storagePath, "hlog.log"));
+      if (!Directory.Exists(_path)) Directory.CreateDirectory(_path);
+
+      _logDevicePath = Path.GetFullPath(Path.Combine(_path, "hlog.log"));
       _log = Devices.CreateLogDevice(_logDevicePath);
       
-      _logObjectDevicePath = Path.GetFullPath(Path.Combine(storagePath, "hlog.obj.log"));
+      _logObjectDevicePath = Path.GetFullPath(Path.Combine(_path, "hlog.obj.log"));
       _objLog = Devices.CreateLogDevice(_logObjectDevicePath);
       
       var serializerSettings = new SerializerSettings<TKEY, TVALUE>
@@ -45,6 +48,12 @@ namespace PersistentDictionary
           );
 
       _functions = new SimpleFunctions<TKEY, TVALUE>();
+    }
+
+    public async Task Delete(TKEY key)
+    {
+      using var s = _store.NewSession(_functions);
+      await s.DeleteAsync(key);
     }
 
     public Task<long> Count(CancellationToken cancellationToken = default)
@@ -67,11 +76,9 @@ namespace PersistentDictionary
       using var s = _store.NewSession(_functions);
       var iterator = s.Iterate();
 
-      while (iterator.GetNext(out var _))
+      while (iterator.GetNext(out var _) && !cancellationToken.IsCancellationRequested)
       {
         await cursor(iterator.GetKey(),iterator.GetValue());
-
-        cancellationToken.ThrowIfCancellationRequested();
       }
     }
 
@@ -96,7 +103,7 @@ namespace PersistentDictionary
 
     public async Task Restore()
     {
-      if (Directory.Exists(_path))
+      if (Directory.GetFiles(_path).Any())
         await _store.RecoverAsync();
     }
 

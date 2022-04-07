@@ -15,11 +15,11 @@
 		<ApplicationIcon />
     <StartupObject />
     <Description>Simple utility to create persistent key-value store over Microsoft.FASTER</Description>
-    <Version>1.0.5</Version>
+    <Version>1.0.9</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BinaryPack" Version="1.0.2" />
+    <PackageReference Include="BinaryPack" Version="1.0.3" />
     <PackageReference Include="Microsoft.FASTER.Core" Version="2.0.0-preview.1.3" />
   </ItemGroup>
 
