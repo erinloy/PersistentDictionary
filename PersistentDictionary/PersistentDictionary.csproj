@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="BinaryPack" Version="1.0.3" />
-    <PackageReference Include="Microsoft.FASTER.Core" Version="2.3.6" />
+    <PackageReference Include="Microsoft.FASTER.Core" Version="2.6.5" />
   </ItemGroup>
 
 </Project>
