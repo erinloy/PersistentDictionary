@@ -29,7 +29,7 @@ namespace PersistentDictionary.Tests
 
       await _persistentDictionary.Write(key, value);
 
-      Assert.AreEqual(value, await _persistentDictionary.Read(key));
+      Assert.That(value == await _persistentDictionary.Read(key));
     }
 
     [Test]
@@ -44,7 +44,7 @@ namespace PersistentDictionary.Tests
         await _persistentDictionary.Write($"{key} {i}", value);
       }
       
-      Assert.AreEqual(count, await _persistentDictionary.Count());
+      Assert.That(count == await _persistentDictionary.Count());
     }
 
     [Test]
@@ -67,7 +67,7 @@ namespace PersistentDictionary.Tests
         return Task.CompletedTask;
       });
 
-      Assert.AreEqual(count, expectedCount);
+      Assert.That(count == expectedCount);
     }
   }
 }

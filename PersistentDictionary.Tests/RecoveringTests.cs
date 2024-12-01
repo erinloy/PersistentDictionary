@@ -28,11 +28,11 @@ namespace PersistentDictionary.Tests
       {
         await dic2.Restore();
 
-        Assert.AreEqual(count, await dic2.Count());
+        Assert.That(count == await dic2.Count());
 
         for (int i = 0; i < count; i++)
         {
-          Assert.AreEqual($"VALUE {i}", await dic2.Read($"KEY {i}"));
+          Assert.That($"VALUE {i}" == await dic2.Read($"KEY {i}"));
         }
       }
 
