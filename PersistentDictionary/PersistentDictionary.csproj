@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -19,8 +19,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BinaryPack" Version="1.0.3" />
-    <PackageReference Include="Microsoft.FASTER.Core" Version="2.6.5" />
+    <PackageReference Include="BinaryPack" />
+    <PackageReference Include="Microsoft.FASTER.Core" />
   </ItemGroup>
 
 </Project>
